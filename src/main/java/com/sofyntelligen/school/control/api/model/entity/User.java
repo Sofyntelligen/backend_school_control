@@ -41,14 +41,15 @@ public class User implements Serializable {
     @Size(min = 1, max = 250)
     private String address;
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
+    @Size(min = 1, max = 60)
     private String email;
 
     @Column(name = "phone", nullable = false)
     private String phone;
 
-    public User() {
-    }
+    @Column(name= "gender", nullable = false)
+    private Boolean gender;
 
     public String getId() {
         return id;
@@ -114,6 +115,14 @@ public class User implements Serializable {
         this.phone = phone;
     }
 
+    public Boolean getGender() {
+        return gender;
+    }
+
+    public void setGender(Boolean gender) {
+        this.gender = gender;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -125,6 +134,7 @@ public class User implements Serializable {
                 ", address='" + address + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
+                ", gender=" + gender +
                 '}';
     }
 }
