@@ -30,4 +30,4 @@
 
 
 ##### Tecnologías relacionadas
->  `Java` `Spring-boot` `Docker` `PostgreSQL` `Native Application`
+>  `Java` `Spring-boot` `Docker` `Mongo` `PostgreSQL` `Native Application`
