@@ -28,6 +28,6 @@
 ##### Fecha del documento
 > 11-11-2019
 
-
 ##### Tecnologías relacionadas
->  `Java` `Spring-boot` `Docker` `PostgreSQL` `Native Application`
+
+>  `Java` `Spring-boot` `Docker` `Mongo` `PostgreSQL` `Native Application`

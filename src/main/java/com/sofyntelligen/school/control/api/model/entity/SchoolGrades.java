@@ -1,4 +1,4 @@
 package com.sofyntelligen.school.control.api.model.entity;
 
-public class Specialty {
+public class SchoolGrades {
 }
