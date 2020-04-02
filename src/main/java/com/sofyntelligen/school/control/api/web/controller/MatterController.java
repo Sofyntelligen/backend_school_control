@@ -32,34 +32,45 @@ public class MatterController {
     }
 
     @GetMapping("/all/")
-    public List<Matter> listMatter(@RequestParam("page") Integer page, @RequestParam("size") Integer size, @RequestParam("descendingAndAscending") Integer descendingAndAscending, @RequestParam("sort") String sort) {
-        Page<Matter> resultPage = matterService.findAllMatter(Util.validIntegerNullAndIsEmpty(page), Util.validIntegerNullAndIsEmpty(size), Util.validIntegerNullAndIsEmpty(descendingAndAscending), Util.validStringNull(sort));
+    public List<Matter> listMatter(@RequestParam("page") Integer page, @RequestParam("size") Integer size, @RequestParam(value="descendingAndAscending", required = false) Integer descendingAndAscending, @RequestParam(value="sort", required = false) String sort) {
 
-        if (page > resultPage.getTotalPages()) {
+        Page<Matter> pageMatter = matterService.matterFindAll(Util.validIntegerNullAndIsEmpty(page), Util.validIntegerNullAndIsEmpty(size), Util.validIntegerNullAndIsEmpty(descendingAndAscending), Util.validStringNull(sort));
+
+        if (page >= pageMatter.getTotalPages()) {
             throw new MyResourceNotFoundException();
         }
 
-        return resultPage.getContent();
+        return pageMatter.getContent();
     }
 
     @PostMapping("/")
     public ResponseEntity<?> createMatter(@Valid @RequestBody Matter matter, BindingResult bindingResult) {
 
-        ResponseEntity<?> result = mapValidationErrorService.validationService(bindingResult);
+        ResponseEntity<?> responseEntity = mapValidationErrorService.validationService(bindingResult);
 
-        if (result == null) {
+        if (responseEntity == null) {
 
-            Matter resultMatter = matterService.saveMatter(matter);
-            result = new ResponseEntity<>(resultMatter, HttpStatus.CREATED);
+            Matter resultMatter = matterService.matterSaveAndUpdate(matter);
+            responseEntity = new ResponseEntity<>(resultMatter, HttpStatus.CREATED);
 
         }
 
-        return result;
+        return responseEntity;
     }
 
-    @PutMapping("/")
-    public String updateMatter() {
-        return "Test API Status";
+    @PatchMapping("/")
+    public ResponseEntity<?>  updateMatter(@Valid @RequestBody Matter matter, BindingResult bindingResult) {
+
+        ResponseEntity<?> responseEntity = mapValidationErrorService.validationService(bindingResult);
+
+        if (responseEntity == null) {
+
+            Matter resultMatter = matterService.matterSaveAndUpdate(matter);
+            responseEntity = new ResponseEntity<>(resultMatter, HttpStatus.CREATED);
+
+        }
+
+        return responseEntity;
     }
 
     @DeleteMapping("/matter_id")

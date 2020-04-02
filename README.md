@@ -22,7 +22,6 @@
 | Nombre        | Email       | Rol  |
 | ------------- |:-------------:| :-----:|
 | [José Daniel Hernández Osorio]()| josedaniel.hernandez.osorio@sofyntelligen.com | FullStack Development |
-| [Jesus Antonio Vilchiz Osorio]()| | Backend Development |
 
 
 ##### Fecha del documento

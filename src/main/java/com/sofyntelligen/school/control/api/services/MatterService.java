@@ -15,11 +15,11 @@ public class MatterService {
     @Autowired
     private MatterRepository matterRepository;
 
-    public Matter saveMatter(Matter matter) {
+    public Matter matterSaveAndUpdate(Matter matter) {
         return matterRepository.save(matter);
     }
 
-    public Page<Matter> findAllMatter(Integer page, Integer size, Integer descendingAndAscending, String sort) {
+    public Page<Matter> matterFindAll(Integer page, Integer size, Integer descendingAndAscending, String sort) {
 
         Sort sortType = Sort.unsorted();
 
