@@ -7,6 +7,6 @@ public enum TypeCourse {
     SPECIALTY,
     COURSE,
     DIPLOMAT,
-    CERTIFIED;
+    CERTIFIED
 
 }

@@ -56,10 +56,9 @@ public class User implements Serializable {
     private Student student;
 
     @JsonManagedReference
-    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
     @JsonIgnore
-    private Teacher teacher
-            ;
+    private Teacher teacher;
 
 
 }
